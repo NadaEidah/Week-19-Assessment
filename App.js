@@ -22,18 +22,34 @@ export default class App extends Component {
       });
   }
 
-  // Q2: we have 6 errors here please fix them [6 pt]
-  addTodoItem = newTask => {
+  // Q2: we have 6 errors here please fix them [6-1, 2,3,4,5,pt]
+  // addTodoItem = newTask => {
+  //   axios
+  //     .get('getTasks')
+  //     .then(res => {
+  //       const result = res;
+  //       this.state.tasks = result;
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // };
+
+    addTodoItem = item => {
     axios
-      .get('getTasks')
+      .post('http://localhost:9000/addNewTask')
       .then(res => {
-        const result = res;
-        this.state.tasks = result;
+        const result = res.data;
+        this.setState({result});
       })
       .catch(error => {
         console.log(error);
       });
   };
+
+
+
+
 
   toggleComplete = id => {
     axios
